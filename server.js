@@ -7,6 +7,7 @@ var express = require('express');
 var app = express();
 var fs = require('fs');
 var path = require('path');
+var helmet = require('helmet');
 
 app.use(function(req, res, next) {
   res.set({
@@ -14,6 +15,7 @@ app.use(function(req, res, next) {
     "Access-Control-Allow-Headers" : "Origin, X-Requested-With, content-type, Accept"
   });
   app.disable('x-powered-by');
+  helmet.hidePoweredBy();
   next();
 });
 
